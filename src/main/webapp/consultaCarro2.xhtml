@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Consultar Carro com filtro</title>
+
+	<style>
+h1 {
+	width: 100%;
+	text-align: center;
+	color: #FFFFFF
+}
+
+body {
+	background-color: #B22222
+}
+.ui-widget{
+	font-size:0.7em;
+}
+</style>
+</h:head>
+<h:body>
+
+	<h1>Consultar Carro com filtro</h1>
+	<h:form id="frm1">
+		<p:messages autoUpdate="true" closable="true" />
+		<p:commandButton value="Consultar" update="@form"
+			action="#{consultaCarroBean2.pesquisar}" />
+		<p:button value="voltar" outcome="home.xhtml" style="float:right" />
+	<p:commandButton value="Listar Todos" update="frm1:carro-table" action="#{consultaCarroBean2.listarTodos}"/>
+
+		<div class="ui-fluid">
+		<p:panelGrid columns="2" style="margin-top:20px" layout="grid" columnClasses="ui-grid-col-2"
+				styleClass="ui-fluid">
+			<p:outputLabel value="Viação" for="viacao" />
+			<p:inputText id="viacao" size="30" value="#{consultaCarroBean2.filtro.viacao}" />
+
+			<p:outputLabel value="Número do Carro" for="nCarro" />
+			<p:inputText id="nCarro" size="14" value="#{consultaCarroBean2.filtro.numeroCarro}" />
+
+			<p:outputLabel value="Linha" for="linha" />
+			<p:inputText id="linha" size="40"
+				value="#{consultaCarroBean2.filtro.linha}" />
+		</p:panelGrid>
+	</div>
+
+
+		<p:dataTable id="carro-table" var="carro" style="margin-top:20px"
+			emptyMessage="Nenhum carro encontrado" rows="20" paginator="true"
+			paginatorAlwaysVisible="false" paginatorPosition="bottom"
+			value="#{consultaCarroBean2.carros}" reflow="true">
+
+			<p:column headerText="Número do Carro">
+				<h:outputText value="#{carro.numeroCarro}" />
+			</p:column>
+
+			<p:column headerText="Viacao">
+				<h:outputText value="#{carro.viacao.nome}" />
+			</p:column>
+
+			<p:column headerText="Linha">
+				<h:outputText value="#{carro.linha}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

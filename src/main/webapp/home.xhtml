@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Inicio</title>
+	<style>
+	body{
+	background-color:#B22222
+	}
+	
+	h3{
+	color:#FFFFFF
+	}
+	</style>
+	<div>
+	<h:form>
+		<p:menubar>
+				<p:submenu label="Cadastros">
+				<p:menuitem value="Cadastro Cliente" outcome="cadastroCliente.xhtml" />
+				<p:menuitem value="Cadastro Login Usuário" outcome="cadastroLoginUsuario.xhtml"/>
+				<p:menuitem value="Cadastro de Viação" outcome="cadastroViacao.xhtml"/>
+				<p:menuitem value="Cadastro de Carros" outcome="cadastroCarro.xhtml"/>
+				</p:submenu>
+				
+				<p:submenu label="Consultas">
+				<p:menuitem value="Consulta Cliente" outcome="consultaCliente.xhtml" />
+				<p:menuitem value="Consulta Login Usuário" outcome="consultaLoginUsuario.xhtml"/>
+				<p:menuitem value="Consulta Viação" outcome="consultaViacao.xhtml"/>
+				<p:menuitem value="Consulta Carro" outcome="consultaCarro.xhtml"/>
+				</p:submenu>
+				
+				<p:submenu label="Consultas com Filtro">
+				<p:menuitem value="Consulta Cliente" outcome="consultaCliente2.xhtml"/>
+				<p:menuitem value="Consulta Viação" outcome="consultaViacao2.xhtml"/>
+				<p:menuitem value="Consulta Carro" outcome="consultaCarro2.xhtml"/>
+				</p:submenu>
+		</p:menubar>
+		
+		</h:form>
+	</div>
+
+</h:head>
+<h:body>
+
+<h3>Olá!! Seja Bem-Vindo ao Sistema de Cadastro de Clientes</h3>
+
+</h:body>
+</html>

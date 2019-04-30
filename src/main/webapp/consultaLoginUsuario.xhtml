@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Consulta de Login de Usuário</title>
+	<style>
+h1 {
+	width: 100%;
+	text-align: center;
+	color: #FFFFFF
+}
+
+body {
+	background-color: #B22222
+}
+
+.ui-widget{
+	font-size:0.7em;
+}
+</style>
+</h:head>
+<h:body>
+	<h1>Consulta Login de Usuário</h1>
+
+	<p:button value="Voltar" outcome="home.xhtml" />
+	<h:form id="frm1">
+		<p:messages autoUpdate="true" closable="true" />
+		<p:dataTable id="usuario-table" var="usuario" style="margin-top:20px"
+			emptyMessage="Nenhum produto encontrado" rows="20" paginator="true"
+			paginatorAlwaysVisible="false" paginatorPosition="bottom"
+			value="#{consultaLoginBean.logins}" reflow="true">
+
+			<p:column headerText="Número de Identificação">
+				<h:outputText value="#{usuario.id}" />
+			</p:column>
+
+			<p:column headerText="Nome">
+				<h:outputText value="#{usuario.nome}" />
+			</p:column>
+
+			<p:column headerText="Senha">
+				<h:outputText value="#{usuario.senha}" />
+			</p:column>
+
+			<p:column>
+				<p:commandButton icon="ui-icon-trash" value="Excluir" update="@form" action="${consultaLoginBean.excluir}">
+					<f:setPropertyActionListener value="#{usuario}" target="#{consultaLoginBean.loginSelecionado}" />
+				</p:commandButton>
+				<p:button icon="ui-icon-pencil" value="Alterar" update="@form"
+					style="margin-left:10px" outcome="cadastroLoginUsuario">
+					<f:param value="#{usuario.id}" name="id" />
+				</p:button>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

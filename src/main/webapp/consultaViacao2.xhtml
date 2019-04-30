@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Consultar Viacao com Filtro</title>
+
+	<style>
+h1 {
+	width: 100%;
+	text-align: center;
+	color: #FFFFFF
+}
+
+body {
+	background-color: #B22222
+}
+.ui-widget{
+	font-size:0.7em;
+}
+</style>
+</h:head>
+<h:body>
+
+	<h1>Consultar Viação com filtro</h1>
+	<h:form id="frm1">
+		<p:messages autoUpdate="true" closable="true" />
+		<p:commandButton value="Consultar" update="@form"
+			action="#{consultaViacaoBean2.pesquisar}" />
+			
+		<p:commandButton value="Listar Todos" update="frm1:viacao-table"
+			action="#{consultaViacaoBean2.pesquisarTodos}"/>
+			
+		<p:button value="voltar" outcome="home.xhtml" style="float:right" />
+
+		<div class="ui-fluid">
+		<p:panelGrid columns="2" style="margin-top:20px" layout="grid" columnClasses="ui-grid-col-2"
+				styleClass="ui-fluid">
+			<p:outputLabel value="Nome" for="nome" />
+			<p:inputText id="nome" size="30" value="#{consultaViacaoBean2.filtro.nome}" />
+
+			<p:outputLabel value="Linha" for="linha" />
+			<p:inputText id="linha" size="14" value="#{consultaViacaoBean2.filtro.linhas}" />
+
+		</p:panelGrid>
+	</div>
+
+		<p:dataTable id="viacao-table" var="viacao" style="margin-top:20px"
+			emptyMessage="Nenhuma viação encontrada" rows="20" paginator="true"
+			paginatorAlwaysVisible="false" paginatorPosition="bottom"
+			value="#{consultaViacaoBean2.viacoes}" reflow="true">
+
+					<p:column headerText="Número da Viação">
+				<h:outputText value="#{viacao.idViacao}" />
+			</p:column>
+
+			<p:column headerText="Nome">
+				<h:outputText value="#{viacao.nome}" />
+			</p:column>
+
+			<p:column headerText="CNPJ">
+				<h:outputText value="#{viacao.cnpj}" />
+			</p:column>
+
+			<p:column headerText="Endereço">
+				<h:outputText value="#{viacao.endereco}"/>
+			</p:column>
+			
+			<p:column headerText="Bairro">
+				<h:outputText value="#{viacao.bairro}"/>
+			</p:column>
+			
+			<p:column headerText="Cidade">
+				<h:outputText value="#{viacao.cidade}"/>
+			</p:column>
+			
+			<p:column headerText="Número">
+				<h:outputText value="#{viacao.numero}"/>
+			</p:column>
+			
+			<p:column headerText="Número de Carros">
+				<h:outputText value="#{viacao.numeroCarros}"/>
+			</p:column>
+			
+			<p:column headerText="Consórcios">
+				<h:outputText value="#{viacao.consorcio}"/>
+			</p:column>
+			
+			<p:column headerText="Linhas">
+				<h:outputText value="#{viacao.linhas}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

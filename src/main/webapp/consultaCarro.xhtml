@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Consulta Carro</title>
+
+	<style>
+h1 {
+	width: 100%;
+	text-align: center;
+	color: #FFFFFF
+}
+
+body {
+	background-color: #B22222
+}
+
+.ui-widget{
+	font-size:0.7em;
+}
+</style>
+</h:head>
+<h:body>
+	<h1>Consulta Carro</h1>
+	<p:button value="Voltar" outcome="home.xhtml" />
+	<h:form id="frm1">
+		<p:messages autoUpdate="true" closable="true"/>
+		<p:dataTable id="carro-table" var="carro" style="margin-top:20px"
+			emptyMessage="Nenhum carro encontrado" rows="20" paginator="true"
+			paginatorAlwaysVisible="false" paginatorPosition="bottom"
+			value="#{consultaCarroBean.carros}" reflow="true">
+
+			<p:column headerText="Número do Carro" >
+				<h:outputText value="#{carro.numeroCarro}" />
+			</p:column>
+			
+			<p:column headerText="Viação">
+				<h:outputText value="#{carro.viacao.nome}" />
+			</p:column>
+
+			<p:column headerText="Linha">
+				<h:outputText value="#{carro.linha}" />
+			</p:column>
+
+
+			<p:column headerText="Ações">
+				<p:commandButton icon="ui-icon-trash" value="Excluir" action="#{consultaCarroBean.excluir}" update="@form">
+				<f:setPropertyActionListener value="#{carro}" target="#{consultaCarroBean.carroSelecionado}" />
+				</p:commandButton>
+				<p:button icon="ui-icon-pencil" value="Alterar" update="@form"  
+				outcome="cadastroCarro">
+				<f:param value="#{carro.idCarro}" name="idCarro"/>
+				<f:param value="#{carro.viacao.idViacao}" name="idViacao"/>
+				</p:button>
+			</p:column>
+			
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

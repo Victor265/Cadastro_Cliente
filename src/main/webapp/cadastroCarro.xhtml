@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cadastro Carros</title>
+
+
+
+	<style type="text/css">
+.ui-panelgrid .ui-grid-responsive .ui-panelgrid-cell {
+	text-align: center;
+}
+
+.footer {
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	z-index: 100;
+}
+
+h1 {
+	width: 100%;
+	text-align: center;
+	color: #FFFFFF
+}
+
+body {
+	background-color: #B22222
+}
+
+.ui-panelgrid .ui-grid-responsive .ui-grid-row {
+		border:none !important;
+	}
+</style>
+</h:head>
+<h:body>
+
+	<h1>Cadastro Carros</h1>
+
+	<h:form id="frm1">
+		<div class="ui-fluid">
+			<p:messages autoUpdate="true" closable="true" />
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2"
+				styleClass="ui-fluid">
+
+				<p:outputLabel value="Número do Carro" for="numeroCarro" required="true" />
+				<p:inputText id="numeroCarro" value="#{carroBean.carro.numeroCarro}" />
+
+				<p:outputLabel value="Viação" for="viacao" required="true" />
+				<p:selectOneMenu id="viacao" value="#{carroBean.viacaoSelecionada}" layout="responsive">
+					<f:selectItem itemLabel="Selecione a Viação"/>
+					<f:selectItems value="#{carroBean.viacoes}" var="viacao"
+					itemValue="#{viacao}" itemLabel="#{viacao.nome}"/>
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Linha" for="linha" required="true" />
+				<p:inputText id="linha" value="#{carroBean.carro.linha}"/>
+				
+			</p:panelGrid>
+		</div>
+		<p:commandButton value="Cadastrar" update="@form"
+			action="#{carroBean.salvar}" />
+		<p:button value="Voltar" outcome="home.xhtml" />
+		<p:commandButton value="Limpar" update="@form" 
+			action="#{carroBean.limpar}" />
+	</h:form>
+
+</h:body>
+</html>

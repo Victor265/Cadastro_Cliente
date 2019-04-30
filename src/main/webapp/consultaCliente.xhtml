@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Consulta Cliente</title>
+
+	<style>
+h1 {
+	width: 100%;
+	text-align: center;
+	color: #FFFFFF
+}
+
+body {
+	background-color: #B22222
+}
+
+.ui-widget{
+	font-size:0.7em;
+}
+</style>
+</h:head>
+<h:body>
+	<h1>Consulta de Clientes</h1>
+	<p:button value="Voltar" outcome="home.xhtml" />
+	<h:form id="frm1">
+		<p:messages autoUpdate="true" closable="true"/>
+		<p:dataTable id="cliente-table" var="cliente" style="margin-top:20px"
+			emptyMessage="Nenhum produto encontrado" rows="20" paginator="true"
+			paginatorAlwaysVisible="false" paginatorPosition="bottom"
+			value="#{consultaBean.clientes}" reflow="true">
+
+			<p:column headerText="Número do Cliente" >
+				<h:outputText value="#{cliente.chavePrimaria.nCliente}" />
+			</p:column>
+			
+			<p:column headerText="Nome">
+				<h:outputText value="#{cliente.nome}" />
+			</p:column>
+
+			<p:column headerText="CPF">
+				<h:outputText value="#{cliente.cpf}" />
+			</p:column>
+
+			<p:column headerText="RG">
+				<h:outputText value="#{cliente.rg}" />
+			</p:column>
+
+			<p:column headerText="Data de Nascimento">
+				<h:outputText value="#{cliente.nascimento}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Telefone Residêncial">
+				<h:outputText value="#{cliente.telefoneR}" />
+			</p:column>
+
+			<p:column headerText="Telefone Celular">
+				<h:outputText value="#{cliente.telefoneC}" />
+			</p:column>
+
+			<p:column headerText="E-mail">
+				<h:outputText value="#{cliente.email}" />
+			</p:column>
+
+			<p:column headerText="CEP">
+				<h:outputText value="#{cliente.cep}" />
+			</p:column>
+
+			<p:column headerText="Logradouro">
+				<h:outputText value="#{cliente.endereco}" />
+			</p:column>
+
+			<p:column headerText="Bairro">
+				<h:outputText value="#{cliente.bairro}" />
+			</p:column>
+
+			<p:column headerText="Cidade">
+				<h:outputText value="#{cliente.cidade}" />
+			</p:column>
+
+			<p:column headerText="UF">
+				<h:outputText value="#{cliente.uf}" />
+			</p:column>
+
+			<p:column headerText="Complemento">
+				<h:outputText value="#{cliente.complemento}" />
+			</p:column>
+
+			<p:column headerText="Número">
+				<h:outputText value="#{cliente.numero}" />
+			</p:column>
+
+			<p:column>
+				<p:commandButton icon="ui-icon-trash" value="Excluir" action="#{consultaBean.excluir}" update="@form">
+				<f:setPropertyActionListener value="#{cliente}" target="#{consultaBean.clienteSelecionado}" />
+				</p:commandButton>
+				<p:button icon="ui-icon-pencil" value="Alterar" update="@form"  
+				outcome="cadastroCliente">
+				<f:param value="#{cliente.chavePrimaria.idGrupoConta}" name="idGrupoConta"/>
+				<f:param value="#{cliente.chavePrimaria.idConta}" name="idConta"/>
+				<f:param value="#{cliente.chavePrimaria.nCliente}" name="nCliente"/>
+				</p:button>
+			</p:column>
+			
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

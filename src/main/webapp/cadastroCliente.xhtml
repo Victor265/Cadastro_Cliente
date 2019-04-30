@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+<h:head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="layoutTeste" name="css/layout.css" />
+
+	<title>Cadastro de Usuário</title>
+
+
+
+</h:head>
+
+<h:body>
+
+	<h:form id="frm1">
+		<p:messages autoUpdate="true" closable="true" />
+		<div class="ui-fluid">
+			<h1>Cadastro de Cliente</h1>
+			<p:panelGrid columns="4" layout="grid"
+				columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
+				styleClass="panelgrid-noborder">
+
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" value="#{cadastroBean.cliente.nome}"
+					required="true" size="30" />
+
+				<p:outputLabel value="CPF" for="cpf" />
+				<p:inputMask mask="999.999.999-99" id="cpf" required="true"
+					value="#{cadastroBean.cliente.cpf}" size="14" />
+
+				<p:outputLabel value="RG" for="rg" />
+				<p:inputText id="rg" required="true"
+					value="#{cadastroBean.cliente.rg}" size="12" />
+
+				<p:outputLabel value="Data de Nascimento" for="nascimento" />
+				<p:calendar value="#{cadastroBean.cliente.nascimento}"
+					id="nascimento" required="true" pattern="dd/MM/yyyy"
+					readonlyInput="true" maxdate="#{cadastroBean.cliente.dataHoje}"
+					navigator="true" locale="pt" />
+
+				<p:outputLabel value="Telefone Residêncial" for="telefoneR" />
+				<p:inputMask mask="(99)9999-9999" required="true" id="telefoneR"
+					value="#{cadastroBean.cliente.telefoneR}" size="13" />
+
+				<p:outputLabel value="Telefone Celular" for="telefoneC" />
+				<p:inputMask mask="(99)99999-9999" required="true" id="telefoneC"
+					value="#{cadastroBean.cliente.telefoneC}" size="14" />
+
+				<p:outputLabel value="E-mail" for="email" />
+				<p:inputText id="email" required="true"
+					value="#{cadastroBean.cliente.email}" size="30" />
+
+				<p:outputLabel value="Cep" for="cep" />
+				<p:inputMask mask="99999-999" id="cep" required="true"
+					value="#{cadastroBean.cliente.cep}" size="9" />
+
+				<p:outputLabel value="Logradouro" for="logradouro" />
+				<p:inputText id="logradouro" required="true"
+					value="#{cadastroBean.cliente.endereco}" size="30" />
+
+				<p:outputLabel value="Bairro" for="bairro" />
+				<p:inputText id="bairro" value="#{cadastroBean.cliente.bairro}"
+					required="true" size="30" />
+
+				<p:outputLabel value="Cidade" for="cidade" />
+				<p:inputText id="cidade" value="#{cadastroBean.cliente.cidade}"
+					required="true" size="30" />
+
+				<p:outputLabel value="UF" for="uf" />
+				<p:inputText id="uf" value="#{cadastroBean.cliente.uf}"
+					required="true" size="2" />
+
+				<p:outputLabel value="Complemento" for="complemento" />
+				<p:inputText id="complemento"
+					value="#{cadastroBean.cliente.complemento}" size="30" />
+
+				<p:outputLabel value="Número" for="numero" />
+				<p:inputText id="numero" value="#{cadastroBean.cliente.numero}"
+					size="5" required="true" />
+			</p:panelGrid>
+		</div>
+	
+			<p:commandButton value="Cadastrar" action="#{cadastroBean.salvar}"
+				update="@form" />
+			<p:button value="Voltar" outcome="home.xhtml" />
+			<p:commandButton value="Limpar" action="#{cadastroBean.limpar}"
+				update="@form" />
+	
+	</h:form>
+</h:body>
+</html>

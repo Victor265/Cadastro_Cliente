@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+h1 {
+	width: 100%;
+	text-align: center;
+	color:#FFFFFF
+}
+
+
+
+
+body,html {
+	margin:0px;
+	padding:0px;
+	background-color: #B22222
+}
+
+
+
+@media(max-width: 1070px) {
+	.ui-panelgrid-footer{
+		width: 100%;
+		float: none;
+		display: block;
+		
+	}
+}
